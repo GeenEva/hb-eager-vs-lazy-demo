@@ -25,10 +25,10 @@ public class AddExistingCoursesToExistingInstructor {
 			
 			session.beginTransaction();
 			
-			Instructor tempInstructor = session.get(Instructor.class, 1);
+			Instructor tempInstructor = session.get(Instructor.class, 3);
 			
-			Course course = session.get(Course.class, 10);
-			Course course2 = session.get(Course.class, 11);
+			Course course = session.get(Course.class, 16);
+			Course course2 = session.get(Course.class, 17);
 
 			tempInstructor.add(course);
 			tempInstructor.add(course2);

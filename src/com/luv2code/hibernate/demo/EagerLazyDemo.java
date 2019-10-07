@@ -8,7 +8,7 @@ import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
 
-public class CreateCoursesDemo {
+public class EagerLazyDemo {
 
 	public static void main(String[] args) {
 		
@@ -21,19 +21,26 @@ public class CreateCoursesDemo {
 
 		Session session = factory.getCurrentSession();
 
+		
+		
 		try {
 			
 			session.beginTransaction();
 			
-		//	Instructor tempInstructor = session.get(Instructor.class, 3);
+			int theId = 3;
 			
-			Course course = new Course("FlipperPippen");
-			Course course2 = new Course("Ozxy Noxcy");
-
-			session.save(course);
-			session.save(course2);
+			Instructor tempInstructor = session.get(Instructor.class, theId);
+			
+			
+			System.out.println("Luv2Code: the instructor is: " + tempInstructor);
+			
+			for(Course course: tempInstructor.getCourses()) {
+				System.out.println("Luv2Code: the course is: " + course.toString());
+			};
 			
 			session.getTransaction().commit();
+			
+			System.out.println("Luv2Code: Done!");
 			
 
 		} catch (Exception e) {
