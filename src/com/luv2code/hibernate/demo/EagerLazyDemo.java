@@ -33,12 +33,14 @@ public class EagerLazyDemo {
 			
 			
 			System.out.println("Luv2Code: the instructor is: " + tempInstructor);
-			
-			for(Course course: tempInstructor.getCourses()) {
-				System.out.println("Luv2Code: the course is: " + course.toString());
-			};
-			
+					
 			session.getTransaction().commit();
+			
+			session.close();
+			
+			//This code does run with eager loading, but not with lazy loading
+			System.out.println("Luv2Code: the courses are: " + tempInstructor.getCourses());
+			
 			
 			System.out.println("Luv2Code: Done!");
 			
